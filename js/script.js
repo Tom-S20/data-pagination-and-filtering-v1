@@ -109,7 +109,7 @@ addPagination(data);
 
 //Extra Credit: Search Component
 const searchTool = document.querySelector( 'h2');
-window.addEventListener('load', (e) => {
+window.addEventListener('load', e => {
 searchTool.insertAdjacentHTML('beforeend',
 `
 <label for="search" class="student-search">
@@ -117,12 +117,21 @@ searchTool.insertAdjacentHTML('beforeend',
   <input id="search" placeholder="Search by name...">
   <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
 </label>
-`)
+`
+   );
+
+   const submit = document.querySelector('[type="button"]');
+submit.addEventListener('click', e => {
+   e.preventDefault();
+   const studentSearch = [];
+   const search = document.getElementById('search').value.toLowerCase();
+
+      data.forEach(student => {
+   const name = `${student.name.first}${student.name.last}`.toLowerCase();
+   if (name.includes(search))
+      studentSearch.push(student);
+
 });
 
-// submit.addEventListener('click', (e) => {
-//    e.preventDefault();
-//    let studentSearch = [];
-//    for ()
-
-// });
+});
+});
