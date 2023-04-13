@@ -10,6 +10,7 @@ For assistance:
    Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
+let studentList = document.querySelector( ".student-list");
 
 
 
@@ -23,7 +24,6 @@ function showPage(list, page) {
    // create two variables that will represent the index for the first and last student on the page
 
  // select the element with a class of `student-list` and assign it to a variable
-   let studentList = document.querySelector( ".student-list");
    studentList.innerHTML = '';
   // set the innerHTML property of the variable you just created to an empty string
 
@@ -61,11 +61,12 @@ function showPage(list, page) {
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
+const linkList = document.querySelector(".link-list");
+
 function addPagination(list) {
 // create a variable to calculate the number of pages needed
 const numOfPages = Math.ceil(list.length/9);
   // select the element with a class of `link-list` and assign it to a variable
-const linkList = document.querySelector(".link-list");
   // set the innerHTML property of the variable you just created to an empty string
 linkList.innerHTML = '';
   // loop over the number of pages needed
@@ -108,7 +109,7 @@ showPage(data, 1);
 addPagination(data);
 
 //Extra Credit: Search Component
-const searchTool = document.querySelector( 'h2');
+const searchTool = document.querySelector( 'h2'); // adding Search Component
 window.addEventListener('load', e => {
 searchTool.insertAdjacentHTML('beforeend',
 `
@@ -119,7 +120,7 @@ searchTool.insertAdjacentHTML('beforeend',
 </label>
 `
    );
-
+// Add functionality to the Search Component
    const submit = document.querySelector('[type="button"]');
 submit.addEventListener('click', e => {
    e.preventDefault();
@@ -127,11 +128,20 @@ submit.addEventListener('click', e => {
    const search = document.getElementById('search').value.toLowerCase();
 
       data.forEach(student => {
-   const name = `${student.name.first}${student.name.last}`.toLowerCase();
+   const name = `${student.name.first} ${student.name.last}`.toLowerCase();
    if (name.includes(search))
       studentSearch.push(student);
 
 });
+
+//Display Search Results and handle not search matches
+if (studentSearch.length) {
+   showPage(studentSearch, 1);
+   addPagination(studentSearch);
+}     else {
+      studentList.innerHTML = `<p>NO RESULTS FOUND</p>`;
+      linkList.innerHTML = '';
+}
 
 });
 });
