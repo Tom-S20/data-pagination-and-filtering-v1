@@ -3,15 +3,7 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
-
-
-/*
-For assistance:
-   Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
-   Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
-*/
 let studentList = document.querySelector( ".student-list");
-
 
 
 /*
@@ -134,7 +126,7 @@ submit.addEventListener('click', e => {
 
 });
 
-//Display Search Results and handle not search matches
+//Display Search Results and handle no search matches
 if (studentSearch.length) {
    showPage(studentSearch, 1);
    addPagination(studentSearch);
