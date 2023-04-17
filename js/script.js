@@ -101,7 +101,7 @@ showPage(data, 1);
 addPagination(data);
 
 //Extra Credit: Search Component
-const searchTool = document.querySelector( 'h2'); // adding Search Component
+const searchTool = document.querySelector( 'header'); // adding Search Component
 window.addEventListener('load', e => {
 searchTool.insertAdjacentHTML('beforeend',
 `
@@ -112,7 +112,9 @@ searchTool.insertAdjacentHTML('beforeend',
 </label>
 `
    );
+
 // Add functionality to the Search Component
+
    const submit = document.querySelector('[type="button"]');
 submit.addEventListener('click', e => {
    e.preventDefault();
